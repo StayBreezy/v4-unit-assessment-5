@@ -43,10 +43,10 @@ module.exports = {
       const {id} = req.session.user;
       const date = new Date;
       if(!id){
-        return res.status(403);
+        return res.sendStatus(403);
       }
       await db.post.create_post([+id, title, img, content, date]);
-      return res.status(200);
+      res.sendStatus(200);
     },
     readPost: (req, res) => {
       req.app.get('db').post.read_post(req.params.id)
